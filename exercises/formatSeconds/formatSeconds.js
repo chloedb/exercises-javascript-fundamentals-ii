@@ -17,10 +17,16 @@
  */
 
 function formatSeconds(num) {
-  // This is your job. :)
+  secondsNumber = num / 60
+  secondsRemainder = num % 60
+  finalString = ''
 
-  // Remember, if the code is stumping you, take a step back and
-  // make sure you can do it by hand.
+  console.log(secondsRemainder)
+
+  if (secondsNumber < 1) {
+    finalString 
+    secondsNumber//.floor() 
+  }
 }
 
 if (require.main === module) {
