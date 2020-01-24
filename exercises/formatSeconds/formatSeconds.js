@@ -21,12 +21,18 @@ function formatSeconds(num) {
   secondsRemainder = num % 60
   finalString = ''
 
-  console.log(secondsRemainder)
-
-  if (secondsNumber < 1) {
-    finalString 
-    secondsNumber//.floor() 
+  //console.log(secondsRemainder)
+  while (secondsNumber > 1 && secondsNumber <= 60) {
+    Math.floor(secondsNumber)
+    console.log(Math.floor(secondsNumber))
+    finalString = finalString + secondsNumber + 'm'
   }
+  while (secondsRemainder < 60) {
+    finalString = finalString + secondsRemainder + 's'
+  }
+  
+  console.log(finalString)
+  return finalString
 }
 
 if (require.main === module) {
