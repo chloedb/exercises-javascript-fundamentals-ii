@@ -20,14 +20,21 @@ function formatSeconds(num) {
   secondsNumber = num / 60
   secondsRemainder = num % 60
   finalString = ''
-
-  //console.log(secondsRemainder)
-  while (secondsNumber > 1 && secondsNumber <= 60) {
-    Math.floor(secondsNumber)
-    console.log(Math.floor(secondsNumber))
-    finalString = finalString + secondsNumber + 'm'
+ 
+  if (secondsNumber >= 60 && secondsNumber < 1440) {
+    hours = Math.floor(secondsNumber)
+    console.log(hours)
+    secondsNumber = secondsNumber - (60 * (hours))
+    //add in a string to represent the hours
+    console.log(secondsNumber)
   }
-  while (secondsRemainder < 60) {
+  
+  if (secondsNumber > 1 && secondsNumber < 60) {
+    secondsNumber = Math.floor(secondsNumber)
+    console.log(Math.floor(secondsNumber))
+    finalString = finalString + secondsNumber + 'm '
+  }
+  if (secondsRemainder < 60) {
     finalString = finalString + secondsRemainder + 's'
   }
   
