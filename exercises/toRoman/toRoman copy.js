@@ -15,28 +15,30 @@
  * @returns {string} The input integer's Roman numeral representation
  */
 function toRoman(num) {
-  let ones = [0,'I','II','III','IV', 'V','VI','VII','IIX','IX']
-  let ten = 'X';
-  let fifty = 'L';
-  let hundreds = 'C';
-  let fiveHundred = 'D';
-  let thousands = 'M';
-  
   let finalString = '';
 
+  toRomanThousands(toRomanHundreds(toRomanTens(toRomanOnes(1))))
+  
   if (num === 0) {
     return ones[0];
   }
 
-//function toRomanThousands(num)
+function toRomanThousands(num) {
+  let thousands = 'M';
+
   if (num >= 1000) {
     let amountOfThousands = num / 1000
     amountOfThousands = Math.floor(amountOfThousands)
     finalString = finalString + thousands.repeat(amountOfThousands)
     num = num - (1000 * amountOfThousands)
+    return finalString
   }
+}
 
-//function toRomanHundreds(num) {
+function toRomanHundreds(num) {
+  let hundreds = 'C';
+  let fiveHundred = 'D';
+
   if (num >= 100 && num < 1000) {
     let amountOfHundreds = num / 100
     amountOfHundreds = Math.floor(amountOfHundreds)
@@ -51,9 +53,13 @@ function toRoman(num) {
     finalString = finalString + (hundreds.repeat(amountOfHundreds))
     num = num - (100 * amountOfHundreds)
     }
+    return finalString
   }
 
-//function toRomanTens(num) {
+function toRomanTens(num) {
+  let ten = 'X';
+  let fifty = 'L';
+
   if (num >= 10 && num < 100) {
     let amountOfTens = num / 10;
     amountOfTens = Math.floor(amountOfTens);
@@ -69,9 +75,12 @@ function toRoman(num) {
       num = num - (10 * amountOfTens);
       //console.log(ten.repeat(amountOfTens)) -- repeat strings
     }
-  } 
+  }
+   return finalString
+} 
 
-//function toRomanOnes(num)
+function toRomanOnes(num) {
+  let ones = [0,'I','II','III','IV', 'V','VI','VII','IIX','IX']
   if (num > 0 && num < 10) {
     //console.log(ones[num])
     finalString = finalString + ones[num]

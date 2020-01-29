@@ -17,10 +17,29 @@
  */
 
 function formatSeconds(num) {
-  // This is your job. :)
-
-  // Remember, if the code is stumping you, take a step back and
-  // make sure you can do it by hand.
+  secondsNumber = num / 60
+  secondsRemainder = num % 60
+  finalString = ''
+ 
+  if (secondsNumber >= 60 && secondsNumber < 1440) {
+    hours = Math.floor(secondsNumber)
+    console.log(hours)
+    secondsNumber = secondsNumber - (60 * (hours))
+    //add in a string to represent the hours
+    console.log(secondsNumber)
+  }
+  
+  if (secondsNumber > 1 && secondsNumber < 60) {
+    secondsNumber = Math.floor(secondsNumber)
+    console.log(Math.floor(secondsNumber))
+    finalString = finalString + secondsNumber + 'm '
+  }
+  if (secondsRemainder < 60) {
+    finalString = finalString + secondsRemainder + 's'
+  }
+  
+  console.log(finalString)
+  return finalString
 }
 
 if (require.main === module) {
